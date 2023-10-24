@@ -28,7 +28,7 @@ int main(){
  
     }
     
-    //選中的棋子是黑色//   
+    //選中的棋子是白色//   
     if( color == 2){
         
         printf("Color is %d\n",color);
@@ -124,6 +124,7 @@ int main(){
     
     }
     
+    //選中的棋子是黑色//
     if( color == 1){
         
         printf("Color is %d\n",color);
