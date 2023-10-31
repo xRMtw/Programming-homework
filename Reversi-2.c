@@ -5,117 +5,112 @@
 int CheckChessCanPlayOn ( int (*chess)[column] , int (*next)[column], int n , int m , int color , int another_color ){
 
     if( chess[n][m] == 0 ){
-        return;
-    }
-
-    //往右檢查//
-    for( int i = m + 1; i < column; i++ ){
-        if( chess[n][i] == 0){
-            break;
-        }
-
-        if( chess[n][i] == another_color  && chess[n][i+1] == 0 ){
-            next[n][i+1] = color;
-        }
-    }
-
-    //往左檢查//
-    for( int i = m - 1; i > -1; i-- ){
-        if( chess[n][i] == 0){
-            break;
-        }
-
-        if( chess[n][i] == another_color && chess[n][i-1] == 0 ){
-            next[n][i-1] = color;
-        }
-    }
-
-    //往下檢查//
-    for( int j = n + 1; j < row; j++ ){
-        if( chess[j][m] == 0){
-            break;
-        }
-
-        if( chess[j][m] == another_color && chess[j+1][m] == 0 ){
-            next[j+1][m] = color;
-        }
-    }
-
-    //往上檢查//
-    for( int j = n - 1; j > -1; j-- ){
-        if( chess[j][m] == 0){
-            break;
-        }
-
-        if( chess[j][m] == another_color && chess[j-1][m] == 0 ){
-            next[j-1][m] = color;
-        }
-    }
-
-    //往右上檢查//
-    for( int i = n - 1, j = m + 1; i > -1, j < column; i--, j++ ){
-            if( chess[i][j] == 0){
-                break;
-            }
-
-            if( chess[i][j] == another_color && chess[i-1][j+1] == 0 ){
-                next[i-1][j+1] = color;
-            }  
-    }
-
-    //往右下檢查//
-    for( int i = n + 1, j = m + 1; i < row, j < column; i++, j++ ){
-            if( chess[i][j] == 0){
-                break;
-            }
-
-            if( chess[i][j] == another_color && chess[i+1][j+1] == 0 ){
-                next[i+1][j+1] = color;
-            }       
-    }
-
-    //往左上檢查//
-    for( int i = n  -1, j = m - 1; i > -1, j > -1; i--, j-- ){
-            if( chess[i][j] == 0){
-                break;
-            }
-
-            if( chess[i][j] == another_color && chess[i-1][j-1] == 0 ){
-                next[i-1][j-1] = color;
-            }
-    }
-
-    //往左下檢查//
-    for( int i = n + 1, j = m - 1; i < row, j > -1; i++, j-- ){
-            if( chess[i][j] == 0){
-                break;
-            }
-
-            if( chess[i][j] == another_color && chess[i+1][j-1] == 0 ){
-                next[i+1][j-1] = color;
-            }
-    }
+        
+        next[n][m] = 0;
     
+    }
+    else{
+        //往右檢查//
+        for( int i = m + 1; i < column; i++ ){
+            if( chess[n][i] == 0){
+                break;
+            }
+
+            if( chess[n][i] == another_color  && chess[n][i+1] == 0 ){
+                next[n][i+1] = color;
+            }
+        }
+
+        //往左檢查//
+        for( int i = m - 1; i > -1; i-- ){
+            if( chess[n][i] == 0){
+                break;
+            }
+
+            if( chess[n][i] == another_color && chess[n][i-1] == 0 ){
+                next[n][i-1] = color;
+            }
+        }
+
+        //往下檢查//
+        for( int j = n + 1; j < row; j++ ){
+            if( chess[j][m] == 0){
+                break;
+            }
+
+            if( chess[j][m] == another_color && chess[j+1][m] == 0 ){
+                next[j+1][m] = color;
+            }
+        }
+
+        //往上檢查//
+        for( int j = n - 1; j > -1; j-- ){
+            if( chess[j][m] == 0){
+                break;
+            }
+
+            if( chess[j][m] == another_color && chess[j-1][m] == 0 ){
+                next[j-1][m] = color;
+            }
+        }
+
+        //往右上檢查//
+        for( int i = n - 1, j = m + 1; i > -1, j < column; i--, j++ ){
+                if( chess[i][j] == 0){
+                break;
+                }
+
+                if( chess[i][j] == another_color && chess[i-1][j+1] == 0 ){
+                    next[i-1][j+1] = color;
+                }  
+        }
+
+        //往右下檢查//
+        for( int i = n + 1, j = m + 1; i < row, j < column; i++, j++ ){
+                if( chess[i][j] == 0){
+                    break;
+                }
+
+                if( chess[i][j] == another_color && chess[i+1][j+1] == 0 ){
+                    next[i+1][j+1] = color;
+                }       
+        }
+
+        //往左上檢查//
+        for( int i = n  -1, j = m - 1; i > -1, j > -1; i--, j-- ){
+                if( chess[i][j] == 0){
+                    break;
+                }
+
+                if( chess[i][j] == another_color && chess[i-1][j-1] == 0 ){
+                    next[i-1][j-1] = color;
+                }
+        }
+
+        //往左下檢查//
+        for( int i = n + 1, j = m - 1; i < row, j > -1; i++, j-- ){
+                if( chess[i][j] == 0){
+                    break;
+                }
+
+                if( chess[i][j] == another_color && chess[i+1][j-1] == 0 ){
+                    next[i+1][j-1] = color;
+                }
+        }
+    
+    }
 }
 
 int main(){
     
-    int chess[row][column]={{ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 },
-                            { 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 } ,
-                            { 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 },
-                            { 0 , 0 , 0 , 1 , 2 , 0 , 0 , 0 },
-                            { 0 , 0 , 0 , 2 , 1 , 0 , 0 , 0 },
-                            { 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 },
-                            { 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 },
-                            { 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 },
-                            };
+    int chess[row][column];
     int next[row][column] = {};
 
-    /*for( int i = 0 ; i < row; i++ ){
+    for( int i = 0 ; i < row; i++ ){
         for( int j = 0 ; j < column; j++ ){
             scanf("%d", &( chess[i][j] ) );
         }
-    }*/
+    }
 
     int x, y, n, m;
     int color, another_color;
