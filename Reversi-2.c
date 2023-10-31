@@ -2,7 +2,7 @@
 #define row 8
 #define column 8
 
-int CheckChessCanPlayOn ( int (*chess)[column] , int (*next)[column], int n , int m , int color , int another_color ){
+int CheckChessCanPlayOn ( int chess[row][column] , int next[row][column], int n , int m , int color , int another_color ){
 
     if( chess[n][m] == 0 ){
         
@@ -141,7 +141,6 @@ int main(){
 
     color = another_color;
     another_color = 3- color;
-    n = 0 , m = 0;
 
     for( int i = 0 ; i < row ; i++ ){
         for( int j = 0 ; j < column ; j++ ){
@@ -150,7 +149,6 @@ int main(){
                 CheckChessCanPlayOn ( chess , next ,  n ,  m , color , another_color );
         }
     }
-
 
     printf("White Chess Can Play on:\n");
     for( int i = 0 ; i < row ; i++ ){
