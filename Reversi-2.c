@@ -141,6 +141,7 @@ int main(){
 
     color = another_color;
     another_color = 3- color;
+    n = 0 , m = 0;
 
     for( int i = 0 ; i < row ; i++ ){
         for( int j = 0 ; j < column ; j++ ){
